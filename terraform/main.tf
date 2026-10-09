@@ -2,7 +2,6 @@ provider "aws" {
   region = "us-east-1"
 }
 
-# VPC (11 series CIDR)
 resource "aws_vpc" "main" {
   cidr_block           = "11.0.0.0/16"
   enable_dns_support   = true
@@ -40,6 +39,7 @@ resource "aws_route_table_association" "a" {
   subnet_id      = aws_subnet.public_1.id
   route_table_id = aws_route_table.public_rt.id
 }
+
 resource "aws_route_table_association" "b" {
   subnet_id      = aws_subnet.public_2.id
   route_table_id = aws_route_table.public_rt.id
@@ -103,6 +103,7 @@ resource "aws_instance" "web_2" {
 output "instance_1_ip" {
   value = aws_instance.web_1.public_ip
 }
+
 output "instance_2_ip" {
   value = aws_instance.web_2.public_ip
 }
