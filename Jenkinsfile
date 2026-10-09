@@ -1,6 +1,8 @@
 pipeline {
     agent any
     environment {
+        // This tells Jenkins where Docker and Terraform are installed on your Mac
+        PATH = "/opt/homebrew/bin:/usr/local/bin:${env.PATH}"
         IMAGE_NAME = "ghcr.io/vaishnavi-devi7/devops_project:latest"
         GHCR_CREDS = credentials('github-token') 
     }
