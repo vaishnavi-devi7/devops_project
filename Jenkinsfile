@@ -9,7 +9,7 @@ pipeline {
         stage('Job 1: Build & Push Docker Image') {
             steps {
                 script {
-                    sh 'docker build -t $IMAGE_NAME .'
+                    sh 'docker build --platform linux/amd64 -t $IMAGE_NAME .'
                     sh 'echo $GHCR_CREDS_PSW | docker login ghcr.io -u $GHCR_CREDS_USR --password-stdin'
                     sh 'docker push $IMAGE_NAME'
                 }
